@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response, Router } from "express";
+import { Request, Response } from "express";
 import { renderTemplate, TemplateType } from "../utils/templates";
 import { get } from "./decorators/routes";
 import { controller } from "./decorators/controller";
@@ -10,11 +10,15 @@ enum Routes {
 	PROTECTED = "/protected",
 }
 
-@controller("/")
+@controller('/auth')
 class LoginController {
 	
-	@get("/login")
+	@get('/login')
 	getLogin(req: Request, res: Response): void {
 		res.send(renderTemplate(TemplateType.LOGIN_FORM));
 	}
 }
+
+console.log('Hi There');
+
+

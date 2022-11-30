@@ -9,6 +9,7 @@ function get(path) {
         // this is the DECORATOR
         // it will be applied for a method and
         // path: function argument, key: method name 
+        console.log('get decorator:', path, key);
         Reflect.defineMetadata('path', path, target, key);
     };
 }

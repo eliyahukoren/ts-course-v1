@@ -23,10 +23,11 @@ var LoginController = /** @class */ (function () {
         res.send((0, templates_1.renderTemplate)(templates_1.TemplateType.LOGIN_FORM));
     };
     __decorate([
-        (0, routes_1.get)("/login")
+        (0, routes_1.get)('/login')
     ], LoginController.prototype, "getLogin", null);
     LoginController = __decorate([
-        (0, controller_1.controller)("/")
+        (0, controller_1.controller)('/auth')
     ], LoginController);
     return LoginController;
 }());
+console.log('Hi There');

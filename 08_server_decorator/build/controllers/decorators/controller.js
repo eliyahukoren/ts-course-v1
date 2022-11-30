@@ -1,13 +1,21 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.controller = void 0;
+exports.controller = exports.router = void 0;
 require("reflect-metadata");
+var express_1 = __importDefault(require("express"));
+exports.router = express_1.default.Router();
 // class|constructor decorator
 function controller(routePrefix) {
     return function (target) {
         for (var key in target.prototype) {
             var routerHandler = target.prototype[key];
             var path = Reflect.getMetadata('path', target.prototype, key);
+            if (path) {
+                exports.router.get("".concat(routePrefix).concat(path), routerHandler);
+            }
         }
     };
 }
