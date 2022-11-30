@@ -66,7 +66,7 @@ const renderPage = (html: string): string => {
 	`;
 }
 
-const renderTemplate = (type: TemplateType, text?: string) => {
+const renderTemplate = (type: TemplateType, text: string = '') => {
 	switch (type) {
 		case TemplateType.LOGIN_FORM:
 			return renderPage(loginFormTemplate);
