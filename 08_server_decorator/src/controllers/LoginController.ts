@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { renderTemplate, TemplateType } from "../utils/templates";
-import { get } from "./decorators/routes";
-import { controller } from "./decorators/controller";
+import { get, controller} from './decorators';
 
 enum Routes {
 	LOGIN = "/login",

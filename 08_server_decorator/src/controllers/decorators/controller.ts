@@ -1,10 +1,11 @@
 import "reflect-metadata";
-import express from "express";
+import { AppRouter } from "../../AppRouter";
 
-export const router = express.Router();
 
 // class|constructor decorator
 export function controller(routePrefix: string) {
+	const router = AppRouter.getInstance();
+	
 	return function(target: Function){
 		for(let key in target.prototype){
 			const routerHandler = target.prototype[key];
