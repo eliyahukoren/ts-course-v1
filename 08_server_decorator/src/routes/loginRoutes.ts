@@ -57,9 +57,7 @@ router.get(Routes.LOGOUT, (req: Request, res: Response) => {
 	res.redirect("/");
 });
 
-router.get(Routes.LOGIN, (req: Request, res: Response) => {
-	res.send(renderTemplate(TemplateType.LOGIN_FORM));
-});
+
 
 router.post(Routes.LOGIN, (req: RequestWithBody, res: Response) => {
 	// using body-parser package for parsing body
