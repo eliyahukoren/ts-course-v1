@@ -1,0 +1,5 @@
+to fix issue with the types install 
+error TS2304: Cannot find name []
+
+yarn add @types/node --dev
+npm i -g parcel-bundler
