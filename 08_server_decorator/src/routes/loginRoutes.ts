@@ -59,28 +59,5 @@ router.get(Routes.LOGOUT, (req: Request, res: Response) => {
 
 
 
-router.post(Routes.LOGIN, (req: RequestWithBody, res: Response) => {
-	// using body-parser package for parsing body
-	const { email, password } = req.body;
-
-	if (
-		!email ||
-		!password ||
-		email !== "eli@emails.ocm" ||
-		password !== "12345678"
-	) {
-		res.send(
-			renderTemplate(TemplateType.ERROR_PAGE, "Invalid email or password")
-		);
-		return;
-	}
-
-	// mark person as logged in
-	req.session = { loggedIn: true, user: { email } };
-	
-
-	// redirect to the root route
-	res.redirect(Routes.HOME);
-});
 
 export { router };
