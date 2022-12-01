@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# React and Redux with Typescript
 
 ![Alt text](Screen.png?raw=true "Title")
 
