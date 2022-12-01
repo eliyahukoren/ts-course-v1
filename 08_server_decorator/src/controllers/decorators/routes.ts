@@ -1,5 +1,6 @@
 import "reflect-metadata";
 import { Methods } from "./Methods";
+import { MetadataKeys } from "./MetadataKeys";
 
 function routeBinder(method: string){
 	return function (path: string){
@@ -10,8 +11,8 @@ function routeBinder(method: string){
 			// it will be applied for a method and
 			// path: function argument, key: method name 
 			console.log('get decorator:', path, key)
-			Reflect.defineMetadata('path', path, target, key)
-			Reflect.defineMetadata('method', method, target, key)
+			Reflect.defineMetadata(MetadataKeys.path, path, target, key)
+			Reflect.defineMetadata(MetadataKeys.method, method, target, key)
 		}
 	}
 }
