@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 
 interface AppProps {
 	color: string;
+	textSize?: number; // define optional props for Component
 }
 
 class App extends React.Component<AppProps> {
