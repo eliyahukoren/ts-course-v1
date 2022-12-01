@@ -1,13 +1,27 @@
 import { NextFunction, Request, Response } from 'express';
 import { RequestHandler } from 'express';
-import "reflect-metadata";
-import { AppRouter } from "../../AppRouter";
-import { Methods } from "./Methods";
-import { MetadataKeys } from "./MetadataKeys";
+import 'reflect-metadata';
+import { AppRouter } from '../../AppRouter';
+import { Methods } from './Methods';
+import { MetadataKeys } from './MetadataKeys';
+import { renderTemplate, TemplateType } from "../../utils/templates";
 
 function bodyValidators(keys: string): RequestHandler{
 	return function(req: Request, res: Response, next: NextFunction){
-		
+		const errorMsg = renderTemplate(TemplateType.ERROR_PAGE, "Invalid request, missing valid property!");
+		if(!req.body){
+			res.status(422).send(errorMsg);
+			return;
+		}
+
+		for(let key of keys){
+			if(!req.body[key]){
+				res.status(422).send(errorMsg);
+				return;
+			}
+		}
+
+		next();
 	}
 }
 
@@ -29,8 +43,16 @@ export function controller(routePrefix: string) {
 				key
 			) || [];
 
+			const requiredBodyProps = Reflect.getMetadata(
+				MetadataKeys.validator,
+				target.prototype,
+				key
+			) || [];
+
+			const validator = bodyValidators(requiredBodyProps);
+
 			if (path) {
-				router[method](`${routePrefix}${path}`, ...middlewares, routerHandler);
+				router[method](`${routePrefix}${path}`, ...middlewares, validator, routerHandler);
 			}
 		}
 	};
