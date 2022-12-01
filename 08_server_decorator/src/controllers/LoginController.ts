@@ -10,6 +10,7 @@ const testUser = {
 
 @controller("/auth")
 class LoginController {
+	
 	@get(AppRoutes.LOGIN)
 	getLogin(req: Request, res: Response): void {
 		res.send(renderTemplate(TemplateType.LOGIN_FORM));
@@ -46,7 +47,5 @@ class LoginController {
 		res.redirect(AppRoutes.ROOT);
 	}
 }
-
-console.log('Hi There');
 
 

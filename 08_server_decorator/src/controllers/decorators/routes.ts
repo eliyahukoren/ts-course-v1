@@ -1,16 +1,21 @@
+import { RequestHandler } from 'express';
 import "reflect-metadata";
 import { Methods } from "./Methods";
 import { MetadataKeys } from "./MetadataKeys";
+
+interface RouteHandlerDescriptor extends PropertyDescriptor {
+	value?: RequestHandler
+}
 
 function routeBinder(method: string){
 	return function (path: string){
 		// this is the decorator factory, it sets up
 		// the returned decorator function
-		return function(target: any, key: string, desc: PropertyDescriptor){
+		return function(target: any, key: string, desc: RouteHandlerDescriptor){
 			// this is the DECORATOR
 			// it will be applied for a method and
 			// path: function argument, key: method name 
-			console.log('get decorator:', path, key)
+		
 			Reflect.defineMetadata(MetadataKeys.path, path, target, key)
 			Reflect.defineMetadata(MetadataKeys.method, method, target, key)
 		}
