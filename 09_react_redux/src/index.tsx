@@ -10,6 +10,32 @@ interface AppState {
 	counter: number;
 }
 
+const Counter = (props: AppState): JSX.Element => {
+	const onIncrement = (): void => {
+		// this.setState({ counter: this.state.counter + 1 });
+	};
+	const onDecrement = (): void => {
+		// this.setState({ counter: this.state.counter - 1 });
+	};
+
+	return (
+		<div className="card mt-5 mx-auto shadow-lg" style={{ width: "18rem" }}>
+			<div className="card-body">
+				<h5 className="card-title">Counter example</h5>
+				<div className="d-grid gap-2 col mx-auto mt-5">
+					<button className="btn btn-primary" onClick={onIncrement}>
+						increment
+					</button>
+					<button className="btn btn-success" onClick={onDecrement}>
+						decrement
+					</button>
+					<p className="text-center">current counter: {0}</p>
+				</div>
+			</div>
+		</div>
+	);
+};
+
 class App extends React.Component<AppProps, AppState> {
 
 	// possible definition of state is:
@@ -23,44 +49,18 @@ class App extends React.Component<AppProps, AppState> {
 		this.state = {counter: 0};
 	}
 
-	onIncrement = (): void => { 
-		this.setState({counter: this.state.counter + 1});
-	};
-	onDecrement = (): void => {
-		this.setState({ counter: this.state.counter - 1 });
-	};
 
 	render(): React.ReactNode {
 		return (
 			<div className="container">
-				<div className="card mt-5 mx-auto shadow-lg" style={{ width: "18rem" }}>
-					<div className="card-body">
-						<h5 className="card-title">Counter example</h5>
-						<div className="d-grid gap-2 col mx-auto mt-5">
-							<button
-								className="btn btn-primary"
-								onClick={this.onIncrement}
-							>
-								increment
-							</button>
-							<button
-								className="btn btn-success"
-								onClick={this.onDecrement}
-							>
-								decrement
-							</button>
-							<p className="text-center">
-								current counter: {this.state.counter}
-							</p>
-						</div>
-					</div>
-				</div>
+				<h3 className={`text-center mt-5 text-${this.props.color}`}>TS React-Redux</h3>
+				<Counter counter={0}/>
 			</div>
 		);
 	}
 }
 
 ReactDOM.render(
-	<App color="red" />,
+	<App color="success" />,
 	document.querySelector('#root')
 );
