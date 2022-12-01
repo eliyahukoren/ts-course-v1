@@ -10,6 +10,7 @@ interface AppState {
 	counter: number;
 }
 
+// functional component
 const Counter = (props: AppState): JSX.Element => {
 	const onIncrement = (): void => {
 		// this.setState({ counter: this.state.counter + 1 });
@@ -36,6 +37,8 @@ const Counter = (props: AppState): JSX.Element => {
 	);
 };
 
+
+// class component
 class App extends React.Component<AppProps, AppState> {
 
 	// possible definition of state is:
