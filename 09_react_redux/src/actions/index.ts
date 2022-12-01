@@ -13,7 +13,7 @@ export interface FetchTodosAction {
 	payload: Todo[];
 }
 
-const url = 'https://jsonplaceholder.typicode.com/todos';
+const url = 'https://jsonplaceholder.typicode.com/todos?limit=20';
 
 export const fetchTodos = () => {
 	return async (dispatch: Dispatch) => {

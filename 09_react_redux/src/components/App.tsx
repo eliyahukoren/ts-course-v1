@@ -1,5 +1,6 @@
 import React from "react";
 import { Counter } from './Counter';
+import { Todos } from './Todos';
 
 interface AppProps {
 	color: string;
@@ -26,6 +27,7 @@ export class App extends React.Component {
 					TS React-Redux
 				</h3>
 				<Counter />
+				<Todos />
 			</div>
 		);
 	}
