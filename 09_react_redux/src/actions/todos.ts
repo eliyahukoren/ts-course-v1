@@ -18,7 +18,7 @@ export interface DeleteTodoAction {
 	payload: number;
 }
 
-const url = "https://jsonplaceholder.typicode.com/todos?limit=20";
+const url = "https://jsonplaceholder.typicode.com/todos?_limit=20";
 
 export const fetchTodos = () => {
 	return async (dispatch: Dispatch) => {
