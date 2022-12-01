@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import { renderTemplate, TemplateType } from "../utils/templates";
 import { get, controller} from './decorators';
 
