@@ -1,19 +1,23 @@
 import "reflect-metadata";
 import { AppRouter } from "../../AppRouter";
-
+import { Methods } from "./Methods";
 
 // class|constructor decorator
 export function controller(routePrefix: string) {
-	const router = AppRouter.getInstance();
-	
-	return function(target: Function){
-		for(let key in target.prototype){
+	return function (target: Function) {
+		const router = AppRouter.getInstance();
+		for (let key in target.prototype) {
 			const routerHandler = target.prototype[key];
-			const path = Reflect.getMetadata('path', target.prototype, key);
-			
-			if(path){
-				router.get(`${routePrefix}${path}`, routerHandler);
+			const path = Reflect.getMetadata("path", target.prototype, key);
+			const method: Methods = Reflect.getMetadata(
+				"method",
+				target.prototype,
+				key
+			);
+
+			if (path) {
+				router[method](`${routePrefix}${path}`, routerHandler);
 			}
 		}
-	}
+	};
 }
