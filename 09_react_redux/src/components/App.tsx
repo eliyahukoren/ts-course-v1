@@ -1,6 +1,8 @@
 import React from "react";
+import { Albums } from "./Albums";
 import { Counter } from './Counter';
 import { Todos } from './Todos';
+import { Users } from "./Users";
 
 interface AppProps {
 	color: string;
@@ -28,6 +30,8 @@ export class App extends React.Component {
 				</h3>
 				<Counter />
 				<Todos />
+				<Users />
+				<Albums />
 			</div>
 		);
 	}
